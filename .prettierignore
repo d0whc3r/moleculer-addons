@@ -1,0 +1,14 @@
+# DEPENDENCIES ----------------------------------------------------------------
+node_modules
+dist
+bin
+
+# IDE & FILES -----------------------------------------------------------------
+.vscode
+.idea
+*.min.*
+*.lock
+*.log
+*.png
+.yarn
+package-lock.json
