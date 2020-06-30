@@ -1,0 +1,63 @@
+{
+  "name": "@d0whc3r/moleculer-slack",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "type": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:d0whc3r/moleculer-addons.git"
+  },
+  "homepage": "https://github.com/d0whc3r/moleculer-addons/tree/master/packages/moleculer-slack#readme",
+  "author": "d0whc3r",
+  "license": "MIT",
+  "keywords": [
+    "microservice",
+    "moleculer",
+    "slack",
+    "messages"
+  ],
+  "scripts": {
+    "dev": "dotenv -e env/development.env -- ts-node example/index.ts",
+    "clean": "rm -fr yarn.lock package-lock.json dist node_modules",
+    "build": "yarn build:clean && run-p build:dts build:rollup",
+    "build:clean": "rimraf dist",
+    "build:rollup": "dotenv -e env/production.env -- rollup -c",
+    "build:rollup:dev": "dotenv -e env/development.env -- rollup -c",
+    "build:dts": "dts-bundle-generator -o dist/index.d.ts src/index.ts"
+  },
+  "peerDependencies": {
+    "moleculer": "^0.14.0 || ^0.13.0 || ^0.12.0"
+  },
+  "dependencies": {
+    "@slack/web-api": "^5.10.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^8.1.0",
+    "builtin-modules": "^3.1.0",
+    "dotenv": "^8.2.0",
+    "dotenv-cli": "^3.2.0",
+    "esbuild": "^0.5.16",
+    "jest": "^26.1.0",
+    "jest-chain": "^1.1.5",
+    "jest-cli": "^26.1.0",
+    "jest-extended": "^0.11.5",
+    "jest-junit": "^11.0.1",
+    "jest-sonar-reporter": "^2.0.0",
+    "moleculer": "^0.14.8",
+    "np": "^6.2.5",
+    "rollup": "^2.18.1",
+    "rollup-plugin-auto-external": "^2.0.0",
+    "rollup-plugin-esbuild": "^2.1.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "ts-jest": "^26.1.1",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.5"
+  },
+  "engines": {
+    "node": ">= 8.x.x"
+  }
+}
