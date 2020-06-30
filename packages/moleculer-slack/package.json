@@ -28,8 +28,8 @@
     "build:rollup": "dotenv -e env/production.env -- rollup -c",
     "build:rollup:dev": "dotenv -e env/development.env -- rollup -c",
     "build:dts": "dts-bundle-generator -o dist/index.d.ts src/index.ts",
-    "test": "jest -i",
-    "test:coverage": "yarn test --coverage"
+    "test2": "jest -i",
+    "test2:coverage": "yarn test --coverage"
   },
   "peerDependencies": {
     "moleculer": "^0.14.0 || ^0.13.0 || ^0.12.0"
