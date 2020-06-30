@@ -5,7 +5,7 @@ module.exports = {
   },
   testMatch: ['**/tests/**/*.spec.ts', '**/__test__/*.ts'],
   collectCoverage: false,
-  coverageDirectory: '../../coverage',
+  coverageDirectory: '../../coverage/telegram',
   collectCoverageFrom: ['src/**/*.ts'],
   coverageThreshold: {
     global: {

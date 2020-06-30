@@ -14,6 +14,9 @@
   },
   "license": "MIT",
   "scripts": {
+    "--- MAIN ---": "------------------------------------------------------------------------------------------------------------------------",
+    "build": "yarn lerna:run build",
+    "test": "yarn lerna:run test:coverage",
     "--- ADDON-SLACK ---": "------------------------------------------------------------------------------------------------------------------------",
     "dev:slack": "yarn workspace @d0whc3r/moleculer-slack run dev",
     "test:slack": "yarn workspace @d0whc3r/moleculer-slack run test",
@@ -23,6 +26,7 @@
     "test:telegram": "yarn workspace @d0whc3r/moleculer-telegram run test",
     "build:telegram": "yarn workspace @d0whc3r/moleculer-telegram run build",
     "--- HELPERS ---": "------------------------------------------------------------------------------------------------------------------------",
+    "lerna:run": "lerna run --stream",
     "ci": "yarn clean:workspace && yarn clean && yarn install",
     "clean:workspace": "lerna run clean",
     "clean": "yarn clean:packages",
