@@ -163,6 +163,26 @@ describe('Test SlackService', () => {
       }
     });
 
+    it('should call postMessage in two channels as array', async () => {
+      context.params = {
+        message: 'sample message5',
+        channel: ['channel1', 'channel2']
+      };
+      try {
+        const response = await Promise.all(service.sendMessage(context));
+        expect(response).toBeDefined().toBeArray().toHaveLength(2);
+        expect(WebClient).toHaveBeenCalled().toHaveBeenCalledTimes(1).toHaveBeenCalledWith(process.env.SLACK_TOKEN);
+        expect((service as any).slack).toBeDefined();
+        expect((service as any).slack.chat.postMessage)
+          .toHaveBeenCalled()
+          .toHaveBeenCalledTimes(2)
+          .toBeCalledWith({ text: context.params.message, channel: 'channel1' })
+          .toBeCalledWith({ text: context.params.message, channel: 'channel2' });
+      } catch (e) {
+        fail(e);
+      }
+    });
+
     describe('Errors', () => {
       afterEach(() => {
         service.settings.slackToken = process.env.SLACK_TOKEN;
