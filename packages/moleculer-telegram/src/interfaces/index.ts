@@ -16,6 +16,6 @@ export interface TelegramServiceOptions extends Options {
 export interface TelegramSendParams {
   channel?: TelegramServiceOptionsSettings['telegramChannel'];
   token?: TelegramServiceOptionsSettings['telegramToken'];
+  extra?: TelegramServiceOptionsSettings['telegramExtraInfo'];
   message: string;
 }
-

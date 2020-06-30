@@ -1,18 +1,18 @@
 import { Options } from '@d0whc3r/moleculer-decorators';
 import { ServiceSettingSchema } from 'moleculer';
 
-export interface TelegramServiceOptionsSettings extends ServiceSettingSchema {
+export interface SlackServiceOptionsSettings extends ServiceSettingSchema {
   slackToken?: string;
   slackChannel?: string | string[];
 }
 
-export interface TelegramServiceOptions extends Options {
+export interface SlackServiceOptions extends Options {
   name: 'slack';
-  settings: TelegramServiceOptionsSettings;
+  settings: SlackServiceOptionsSettings;
 }
 
-export interface TelegramSendParams {
-  channel?: TelegramServiceOptionsSettings['slackChannel'];
-  token?: TelegramServiceOptionsSettings['slackToken'];
+export interface SlackSendParams {
+  channel?: SlackServiceOptionsSettings['slackChannel'];
+  token?: SlackServiceOptionsSettings['slackToken'];
   message: string;
 }

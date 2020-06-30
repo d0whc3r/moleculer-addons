@@ -28,7 +28,7 @@
     "--- HELPERS ---": "------------------------------------------------------------------------------------------------------------------------",
     "lerna:run": "lerna run --stream",
     "ci": "yarn clean:workspace && yarn clean && yarn install",
-    "clean:workspace": "lerna run clean",
+    "clean:workspace": "lerna run clean -p",
     "clean": "yarn clean:packages",
     "clean:packages": "rm -fr yarn.lock package-lock.json dist node_modules",
     "format": "pretty-quick \"*.ts\" --write --staged",
