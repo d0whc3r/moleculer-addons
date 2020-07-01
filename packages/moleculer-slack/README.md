@@ -30,7 +30,7 @@ broker.createService({
 // Start server
 broker.start().then(() => {
   broker
-    .call('slackService.send', { message: 'testing!' })
+    .call('slack.send', { message: 'testing!' })
     .then((response) => {
       console.log('Slack message response', response);
     })
