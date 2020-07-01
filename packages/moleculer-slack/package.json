@@ -1,6 +1,6 @@
 {
   "name": "@d0whc3r/moleculer-slack",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "type": "dist/index.d.ts",
@@ -32,8 +32,7 @@
     "build:dts": "dts-bundle-generator --config dts-bundle-generator.json",
     "test": "jest -i",
     "test:coverage": "yarn test --coverage",
-    "release": "np",
-    "postversion": "git push && git push --follow-tags"
+    "release": "np"
   },
   "peerDependencies": {
     "moleculer": "^0.14.0 || ^0.13.0 || ^0.12.0"
