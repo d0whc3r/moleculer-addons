@@ -4,19 +4,19 @@
 
 Send Messages to Slack API.
 
-# Install
+## Install
 
 ```bash
 $ npm install @d0whc3r/moleculer-slack --save
 ```
 
-# Usage
+## Usage
 
 > This addon reads the `SLACK_TOKEN` and `SLACK_CHANNEL` environment variables, but all are optional
 
 ```js
 let { ServiceBroker } = require("moleculer");
-let SlackService = require("@d0whc3r/moleculer-slack");
+let { SlackService } = require("@d0whc3r/moleculer-slack");
 
 // Create broker
 let broker = new ServiceBroker({ logger: console });
@@ -29,56 +29,56 @@ broker.createService({
 
 // Start server
 broker.start().then(() => {
-
-    broker
-        .call("slack.send", { message: "Hello Slack!" })
-        .then((res) => console.log("Slack message sent. Sid:", res.response_metadata))
-        .catch(console.error);
-
+  broker
+    .call('slackService.send', { message: 'testing!' })
+    .then((response) => {
+      console.log('Slack message response', response);
+    })
+    .catch(console.error);
 });
 ```
 
-# Settings
+## Settings
 
 | Property | Type | Default | Description |
 | -------- | ---- | ------- | ----------- |
 | `slackToken` | `String` | `SLACK_TOKEN env variable` | Slack API Token. Visit your [Slack App dashboard's](https://www.slack.com/apps) main page. Click "Create App, Generate Token", then copy and paste your "API TOKEN" here. |
 | `slackChannel` | `String` | `SLACK_CHANNEL env variable` | Slack API Token. Visit your [Slack App dashboard's](https://www.slack.com/apps) main page. Add incoming webhook and create/select a channel, then copy and paste here. |
 
-# Actions
-## `send` 
+## Actions
+### `send` 
 
 Send a Slack Message
 
-### Parameters
+#### Parameters
 | Property | Type | Default | Description |
 | -------- | ---- | ------- | ----------- |
 | `message` | `String` | **required** | Message text |
 | `channel` | `String` | `null` | (optional) Channel name, can be array or string, if it is a string it could be multiple channels separated by commas |
 | `token` | `String` | `null` | (optional) Token to use |
 
-### Results
-**Type:** `Promise<WebAPICallResult>[]`
+#### Results
+**Type:** `Promise<WebAPICallResult[]>`
 
-# Methods
+## Methods
 
-## `sendMessageToChannels` 
+### `sendMessageToChannels` 
 
 Send a slack message to one or more channels
 
-### Parameters
+#### Parameters
 | Property | Type | Default | Description |
 | -------- | ---- | ------- | ----------- |
 | `message` | `String` | - | Body of the message |
 | `channel` | `String or Array<String>` | - | Channel or channels name/s |
 
-### Results
+#### Results
 **Type:** `Promise<WebAPICallResult>[]`
 
-# Test
+## Test
 ```
 $ npm test
 ```
 
-# License
+## License
 The project is available under the [MIT license](https://tldrlegal.com/license/mit-license).

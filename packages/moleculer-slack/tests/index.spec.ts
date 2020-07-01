@@ -1,5 +1,5 @@
 import Moleculer, { Context, Endpoint, ServiceBroker } from 'moleculer';
-import SlackService from '../src';
+import SlackService from '../src/slack.service';
 import { SlackSendParams } from '../src/interfaces';
 import { WebClient } from '@slack/web-api';
 import MoleculerError = Moleculer.Errors.MoleculerError;
@@ -9,7 +9,7 @@ jest.mock('@slack/web-api');
 (WebClient as any).mockImplementation(() => {
   return {
     chat: {
-      postMessage: jest.fn().mockResolvedValue({ response_metadata: { mock: true } })
+      postMessage: jest.fn().mockResolvedValue({ ts: 'mocked' })
     }
   };
 });
@@ -33,7 +33,6 @@ describe('Test SlackService', () => {
 
   afterEach(async () => {
     jest.clearAllMocks();
-    // jest.resetAllMocks();
   });
 
   beforeEach(() => expect.hasAssertions());
@@ -73,7 +72,7 @@ describe('Test SlackService', () => {
         message: 'sample message'
       };
       try {
-        const response = await Promise.all(service.sendMessage(context));
+        const response = await service.sendMessage(context);
         expect(response).toBeDefined().toBeArray().toHaveLength(1);
         expect(WebClient).toHaveBeenCalled().toHaveBeenCalledTimes(1).toHaveBeenCalledWith(process.env.SLACK_TOKEN);
         expect((service as any).slack).toBeDefined();
@@ -92,7 +91,7 @@ describe('Test SlackService', () => {
         token: 'other token'
       };
       try {
-        const response = await Promise.all(service.sendMessage(context));
+        const response = await service.sendMessage(context);
         expect(response).toBeDefined().toBeArray().toHaveLength(1);
         expect(WebClient).toHaveBeenCalled().toHaveBeenCalledTimes(1).toHaveBeenCalledWith(context.params.token);
         expect((service as any).slack).toBeDefined();
@@ -111,7 +110,7 @@ describe('Test SlackService', () => {
         channel: 'aChannel'
       };
       try {
-        const response = await Promise.all(service.sendMessage(context));
+        const response = await service.sendMessage(context);
         expect(response).toBeDefined().toBeArray().toHaveLength(1);
         expect(WebClient).toHaveBeenCalled().toHaveBeenCalledTimes(1).toHaveBeenCalledWith(process.env.SLACK_TOKEN);
         expect((service as any).slack).toBeDefined();
@@ -129,8 +128,8 @@ describe('Test SlackService', () => {
         message: 'sample message3'
       };
       try {
-        await Promise.all(service.sendMessage(context));
-        const response = await Promise.all(service.sendMessage(context));
+        await service.sendMessage(context);
+        const response = await service.sendMessage(context);
         expect(response).toBeDefined().toBeArray().toHaveLength(1);
         expect(WebClient).toHaveBeenCalled().toHaveBeenCalledTimes(1).toHaveBeenCalledWith(process.env.SLACK_TOKEN);
         expect((service as any).slack).toBeDefined();
@@ -149,7 +148,7 @@ describe('Test SlackService', () => {
         channel: 'channel1,channel2'
       };
       try {
-        const response = await Promise.all(service.sendMessage(context));
+        const response = await service.sendMessage(context);
         expect(response).toBeDefined().toBeArray().toHaveLength(2);
         expect(WebClient).toHaveBeenCalled().toHaveBeenCalledTimes(1).toHaveBeenCalledWith(process.env.SLACK_TOKEN);
         expect((service as any).slack).toBeDefined();
@@ -169,7 +168,7 @@ describe('Test SlackService', () => {
         channel: ['channel1', 'channel2']
       };
       try {
-        const response = await Promise.all(service.sendMessage(context));
+        const response = await service.sendMessage(context);
         expect(response).toBeDefined().toBeArray().toHaveLength(2);
         expect(WebClient).toHaveBeenCalled().toHaveBeenCalledTimes(1).toHaveBeenCalledWith(process.env.SLACK_TOKEN);
         expect((service as any).slack).toBeDefined();
@@ -195,7 +194,7 @@ describe('Test SlackService', () => {
           message: 'sample message'
         };
         try {
-          await Promise.all(service.sendMessage(context));
+          await service.sendMessage(context);
         } catch (err) {
           expect(err).toBeInstanceOf(MoleculerError);
           expect(err.message).toBe('UNKNOWN TOKEN (set SLACK_TOKEN env variable or specify "token" in action)');
@@ -209,7 +208,7 @@ describe('Test SlackService', () => {
           message: 'sample message'
         };
         try {
-          await Promise.all(service.sendMessage(context));
+          await service.sendMessage(context);
         } catch (err) {
           expect(err).toBeInstanceOf(MoleculerError);
           expect(err.message).toBe(
@@ -231,7 +230,7 @@ describe('Test SlackService', () => {
           message: 'sample message'
         };
         try {
-          await Promise.all(service.sendMessage(context));
+          await service.sendMessage(context);
         } catch (err) {
           expect(err).toBeInstanceOf(MoleculerError);
           expect(err.message).toBe('[slack] Error in send message to "TestChannel1": errMessage (errDetail)');

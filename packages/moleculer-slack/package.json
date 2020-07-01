@@ -1,6 +1,6 @@
 {
   "name": "@d0whc3r/moleculer-slack",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "type": "dist/index.d.ts",
@@ -21,15 +21,18 @@
     "messages"
   ],
   "scripts": {
-    "dev": "dotenv -e env/development.env -- ts-node example/index.ts",
+    "example": "ts-node example/index.ts",
+    "example:dev": "dotenv -e ./env/development.env -- yarn example dev",
+    "example:prod": "dotenv -e ./env/production.env -- yarn example prod",
     "clean": "rm -fr yarn.lock package-lock.json dist node_modules",
     "build": "yarn build:clean && run-p build:dts build:rollup",
     "build:clean": "rimraf dist",
-    "build:rollup": "dotenv -e env/production.env -- rollup -c",
-    "build:rollup:dev": "dotenv -e env/development.env -- rollup -c",
-    "build:dts": "dts-bundle-generator -o dist/index.d.ts src/index.ts",
+    "build:rollup": "dotenv -e ./env/production.env -- rollup -c",
+    "build:rollup:dev": "dotenv -e ./env/development.env -- rollup -c",
+    "build:dts": "dts-bundle-generator --config dts-bundle-generator.json",
     "test": "jest -i",
-    "test:coverage": "yarn test --coverage"
+    "test:coverage": "yarn test --coverage",
+    "release": "np"
   },
   "peerDependencies": {
     "moleculer": "^0.14.0 || ^0.13.0 || ^0.12.0"

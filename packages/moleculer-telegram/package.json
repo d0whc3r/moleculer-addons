@@ -21,15 +21,15 @@
     "messages"
   ],
   "scripts": {
-    "dev": "dotenv -e env/development.env -- ts-node example/index.ts",
+    "example": "dotenv -e ./env/development.env -- ts-node example/index.ts",
     "clean": "rm -fr yarn.lock package-lock.json dist node_modules",
     "build": "yarn build:clean && run-p build:dts build:rollup",
     "build:clean": "rimraf dist",
-    "build:rollup": "dotenv -e env/production.env -- rollup -c",
-    "build:rollup:dev": "dotenv -e env/development.env -- rollup -c",
+    "build:rollup": "dotenv -e ./env/production.env -- rollup -c",
+    "build:rollup:dev": "dotenv -e ./env/development.env -- rollup -c",
     "build:dts": "dts-bundle-generator -o dist/index.d.ts src/index.ts",
-    "test2": "jest -i",
-    "test2:coverage": "yarn test --coverage"
+    "test": "jest -i",
+    "test:coverage": "yarn test --coverage"
   },
   "peerDependencies": {
     "moleculer": "^0.14.0 || ^0.13.0 || ^0.12.0"

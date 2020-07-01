@@ -6,6 +6,7 @@ node_modules
 coverage/
 yarn-error.log
 .yarn-cache
+.env
 
 # Runtime data
 pids
@@ -23,3 +24,4 @@ pids
 .yarn-integrity
 
 .scannerwork
+/get.sh
