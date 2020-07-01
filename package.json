@@ -21,6 +21,7 @@
     "example:slack": "yarn workspace @d0whc3r/moleculer-slack run example",
     "test:slack": "yarn workspace @d0whc3r/moleculer-slack run test",
     "build:slack": "yarn workspace @d0whc3r/moleculer-slack run build",
+    "release:slack": "yarn workspace @d0whc3r/moleculer-slack run release",
     "--- ADDON-TELEGRAM ---": "------------------------------------------------------------------------------------------------------------------------",
     "example:telegram": "yarn workspace @d0whc3r/moleculer-telegram run example",
     "test:telegram": "yarn workspace @d0whc3r/moleculer-telegram run test",
@@ -69,5 +70,8 @@
     "**/*.ts": [
       "yarn format"
     ]
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
   }
 }
