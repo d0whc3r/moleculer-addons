@@ -3,7 +3,7 @@ import { TelegramSendParams, TelegramServiceOptions, TelegramServiceOptionsSetti
 import moleculer, { Context, Errors } from 'moleculer';
 import { Telegraf } from 'telegraf';
 import { TelegrafContext } from 'telegraf/typings/context';
-import * as tt from 'telegraf/typings/telegram-types';
+import { ExtraEditMessage, Message } from 'telegraf/typings/telegram-types';
 import MoleculerError = Errors.MoleculerError;
 
 export class _TelegramService extends moleculer.Service<TelegramServiceOptionsSettings> {
@@ -54,8 +54,8 @@ export class _TelegramService extends moleculer.Service<TelegramServiceOptionsSe
   }
 
   @Method
-  private sendMessageToChannels(text: string, channels: string[], extra: tt.ExtraEditMessage = {}) {
-    const promises: Promise<tt.Message>[] = [];
+  private sendMessageToChannels(text: string, channels: string[], extra: ExtraEditMessage = {}) {
+    const promises: Promise<Message>[] = [];
     channels.forEach((channel) => {
       const promise = this.telegram!.telegram.sendMessage(channel, text, extra)
         .then((response) => {
