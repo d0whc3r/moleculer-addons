@@ -1,11 +1,9 @@
 import { Action, Method, Service } from '@d0whc3r/moleculer-decorators';
 import { TelegramSendParams, TelegramServiceOptions, TelegramServiceOptionsSettings } from './interfaces';
-import moleculer from 'moleculer';
-import Moleculer, { Context } from 'moleculer';
+import moleculer, { Context, Errors } from 'moleculer';
 import { Telegraf } from 'telegraf';
 import { TelegrafContext } from 'telegraf/typings/context';
-
-import MoleculerError = Moleculer.Errors.MoleculerError;
+import MoleculerError = Errors.MoleculerError;
 
 @Service<TelegramServiceOptions>({
   name: 'telegram',
@@ -38,13 +36,15 @@ export default class TelegramService extends moleculer.Service<TelegramServiceOp
       throw new MoleculerError('UNKNOWN TOKEN (set TELEGRAM_TOKEN env variable or specify "token" in action)');
     }
     if (!channel) {
-      throw new MoleculerError('UNKNOWN CHANNEL (set TELEGRAM_CHANNEL env variable or specify "channel" in action; it could be a simple string, and for multi channel: a string separated by commas or an array)');
+      throw new MoleculerError(
+        'UNKNOWN CHANNEL (set TELEGRAM_CHANNEL env variable or specify "channel" in action; it could be a simple string, and for multi channel: a string separated by commas or an array)'
+      );
     }
     if (!this.telegram) {
       this.telegram = new Telegraf(token);
     }
     if (!this.telegram) {
-      throw new MoleculerError('[telegram] Error in initiate telegram api sdk')
+      throw new MoleculerError('[telegram] Error in initiate telegram api sdk');
     }
     const chans = typeof channel === 'string' ? channel.split(',') : channel;
     const channels = Array.isArray(chans) ? chans : [chans];
@@ -54,13 +54,14 @@ export default class TelegramService extends moleculer.Service<TelegramServiceOp
   @Method
   private sendMessageToChannels(text: string, channels: string[]) {
     channels.forEach((channel) => {
-      this.telegram?.telegram.sendMessage(channel, text)
+      this.telegram?.telegram
+        .sendMessage(channel, text)
         .then((response) => {
           this.logger.debug(`[telegram] Message sent to "${channel}"`);
           return response;
         })
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/restrict-template-expressions
         .catch((err) => Promise.reject(new MoleculerError(`[telegram] Error in send message to "${channel}": ${err.message} (${err.detail})`)));
     });
   }
-
 }

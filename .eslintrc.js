@@ -105,7 +105,9 @@ module.exports = {
       rules: {
         'sonarjs/cognitive-complexity': 0,
         'sonarjs/no-duplicate-string': 0,
-        'sonarjs/no-identical-functions': 0
+        'sonarjs/no-identical-functions': 0,
+        '@typescript-eslint/no-unsafe-member-access': 0,
+        '@typescript-eslint/no-unsafe-call': 0
       },
       env: {
         jest: true

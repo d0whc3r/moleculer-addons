@@ -35,7 +35,8 @@
     "clean:packages": "rm -fr yarn.lock package-lock.json dist node_modules",
     "format": "pretty-quick \"*.ts\" --write --staged",
     "lint": "eslint -c .eslintrc.js --ext .ts,.js packages",
-    "lint:fix": "yarn lint --fix"
+    "lint:fix": "yarn lint --fix",
+    "postversion": "git push && git push --follow-tags"
   },
   "devDependencies": {
     "@commitlint/cli": "9.0.1",

@@ -48,10 +48,12 @@ export class _SlackService extends moleculer.Service<SlackServiceOptionsSettings
     channels.forEach((channel) => {
       const promise = this.slack!.chat.postMessage({ text, channel })
         .then((response) => {
+          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
           this.logger.debug(`[slack] Message sent to "${channel}", id: ${response.ts}`);
           return response;
         })
-        .catch((err) => Promise.reject(new MoleculerError(`[slack] Error in send message to "${channel}": ${err.message} (${err.detail})`)));
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/restrict-template-expressions
+        .catch((err: any) => Promise.reject(new MoleculerError(`[slack] Error in send message to "${channel}": ${err.message} (${err.detail})`)));
       promises.push(promise);
     });
     return promises;
