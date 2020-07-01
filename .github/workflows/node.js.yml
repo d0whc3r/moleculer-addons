@@ -39,6 +39,14 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         base-path: packages/moleculer-telegram
         path-to-lcov: coverage/telegram/lcov.info
+    - name: Codecov slack
+      uses: codecov/codecov-action@v1
+      with:
+        file: ./coverage/slack/slack-test-report.xml # optional
+    - name: Codecov telegram
+      uses: codecov/codecov-action@v1
+      with:
+        file: ./coverage/telegram/slack-test-report.xml # optional
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@master
       env:
