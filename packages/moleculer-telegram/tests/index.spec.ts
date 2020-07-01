@@ -176,7 +176,7 @@ describe('Test TelegramService', () => {
         expect((service as any).telegram.telegram.sendMessage)
           .toHaveBeenCalled()
           .toHaveBeenCalledTimes(2)
-          .toBeCalledWith('channel1', context.params.message)
+          .toBeCalledWith('channel1', context.params.message, service.settings.telegramExtraInfo)
           .toBeCalledWith('channel2', context.params.message, service.settings.telegramExtraInfo);
       } catch (e) {
         fail(e);
@@ -196,7 +196,7 @@ describe('Test TelegramService', () => {
         expect((service as any).telegram.telegram.sendMessage)
           .toHaveBeenCalled()
           .toHaveBeenCalledTimes(2)
-          .toBeCalledWith('channel1', context.params.message)
+          .toBeCalledWith('channel1', context.params.message, service.settings.telegramExtraInfo)
           .toBeCalledWith('channel2', context.params.message, service.settings.telegramExtraInfo);
       } catch (e) {
         fail(e);
