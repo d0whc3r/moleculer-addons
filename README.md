@@ -3,7 +3,6 @@
 # Moleculer addons
 
 ![Node.js CI](https://github.com/d0whc3r/moleculer-addons/workflows/Node.js%20CI/badge.svg)
-[![npm](https://img.shields.io/npm/v/@d0whc3r/moleculer-addons.svg)](https://www.npmjs.com/package/@d0whc3r/moleculer-addons) 
 [![GitHub issues](https://img.shields.io/github/issues/d0whc3r/moleculer-addons.svg)](https://github.com/d0whc3r/moleculer-addons/issues) 
 [![GitHub license](https://img.shields.io/github/license/d0whc3r/moleculer-addons.svg)](https://github.com/d0whc3r/moleculer-addons/blob/master/LICENSE)
 [![Powered by moleculer](https://img.shields.io/badge/Powered%20by-Moleculer-green.svg?colorB=0e83cd)](http://moleculer.services/)

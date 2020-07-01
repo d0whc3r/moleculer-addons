@@ -4,3 +4,22 @@ node_modules
 .idea
 .DS_Store
 coverage/
+yarn-error.log
+.yarn-cache
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Optional npm cache directory
+.npm
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+.scannerwork
