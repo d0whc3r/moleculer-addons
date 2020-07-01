@@ -1,6 +1,6 @@
 {
   "name": "@d0whc3r/moleculer-telegram",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "type": "dist/index.d.ts",
