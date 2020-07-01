@@ -7,8 +7,8 @@
       "filePath": "./src/index.ts",
       "outFile": "./dist/index.d.ts",
       "libraries": {
-        "allowedTypesLibraries": ["node"],
-        "importedLibraries": ["moleculer", ".", "telegraf"],
+        "allowedTypesLibraries": [],
+        "importedLibraries": ["moleculer", ".", "telegraf", "telegram-typings"],
         "inlinedLibraries": []
       },
       "output": {

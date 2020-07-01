@@ -3,7 +3,8 @@ import { TelegramSendParams, TelegramServiceOptions, TelegramServiceOptionsSetti
 import moleculer, { Context, Errors } from 'moleculer';
 import { Telegraf } from 'telegraf';
 import { TelegrafContext } from 'telegraf/typings/context';
-import { ExtraEditMessage, Message } from 'telegraf/typings/telegram-types';
+import { Message } from 'telegram-typings';
+import { ExtraEditMessage } from 'telegraf/typings/telegram-types';
 import MoleculerError = Errors.MoleculerError;
 
 export class _TelegramService extends moleculer.Service<TelegramServiceOptionsSettings> {
