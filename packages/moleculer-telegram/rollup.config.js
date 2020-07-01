@@ -1,5 +1,4 @@
 import autoExternal from 'rollup-plugin-auto-external';
-import json from '@rollup/plugin-json';
 import esbuild from 'rollup-plugin-esbuild';
 import builtinModules from 'builtin-modules';
 import nodeResolve from '@rollup/plugin-node-resolve';
@@ -16,13 +15,6 @@ export default () => {
     browser: false
   };
   const plugins = [
-    json({
-      exclude: 'node_modules/**',
-      preferConst: true,
-      compact: true,
-      namedExports: true,
-      indent: '  '
-    }),
     autoExternal({
       builtins: true,
       peerDependencies: true,
