@@ -3,13 +3,15 @@
 # Moleculer addons
 
 [![Powered by moleculer](https://img.shields.io/badge/Powered%20by-Moleculer-green.svg?colorB=0e83cd)](http://moleculer.services/)
+
+
 ![Node.js CI](https://github.com/d0whc3r/moleculer-addons/workflows/Node.js%20CI/badge.svg)
+[![codecov](https://codecov.io/gh/d0whc3r/moleculer-addons/branch/master/graph/badge.svg)](https://codecov.io/gh/d0whc3r/moleculer-addons)
 [![GitHub issues](https://img.shields.io/github/issues/d0whc3r/moleculer-addons.svg)](https://github.com/d0whc3r/moleculer-addons/issues) 
 [![GitHub license](https://img.shields.io/github/license/d0whc3r/moleculer-addons.svg)](https://github.com/d0whc3r/moleculer-addons/blob/master/LICENSE)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/d1cf7d6be1c94d56bd6e30ee1fd5ebc9)](https://www.codacy.com/manual/d0whc3r/moleculer-addons?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=d0whc3r/moleculer-addons&amp;utm_campaign=Badge_Grade)
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=d0whc3r_moleculer-addons&metric=alert_status)](https://sonarcloud.io/dashboard?id=d0whc3r_moleculer-addons)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=d0whc3r_moleculer-addons&metric=coverage)](https://sonarcloud.io/dashboard?id=d0whc3r_moleculer-addons)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=d0whc3r_moleculer-addons&metric=bugs)](https://sonarcloud.io/dashboard?id=d0whc3r_moleculer-addons)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=d0whc3r_moleculer-addons&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=d0whc3r_moleculer-addons)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=d0whc3r_moleculer-addons&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=d0whc3r_moleculer-addons)
