@@ -9,7 +9,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/d0whc3r/moleculer-addons.git"
+    "url": "https://github.com/d0whc3r/moleculer-addons.git",
+    "directory": "packages/moleculer-slack"
   },
   "homepage": "https://github.com/d0whc3r/moleculer-addons/tree/master/packages/moleculer-slack#readme",
   "author": "d0whc3r",
