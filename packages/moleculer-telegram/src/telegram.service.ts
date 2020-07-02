@@ -8,16 +8,22 @@ import { ExtraEditMessage } from 'telegraf/typings/telegram-types';
 import MoleculerError = Errors.MoleculerError;
 
 export class _TelegramService extends moleculer.Service<TelegramServiceOptionsSettings> {
-  name = 'telegram';
-  settings: TelegramServiceOptionsSettings = {
-    telegramToken: process.env.TELEGRAM_TOKEN,
-    telegramChannel: process.env.TELEGRAM_CHANNEL,
-    telegramExtraInfo: {
-      parse_mode: 'Markdown',
-      disable_web_page_preview: true
-    }
-  };
   private telegram?: Telegraf<TelegrafContext>;
+
+  public get name() {
+    return 'telegram';
+  }
+
+  public get settings(): TelegramServiceOptionsSettings {
+    return {
+      telegramToken: process.env.TELEGRAM_TOKEN,
+      telegramChannel: process.env.TELEGRAM_CHANNEL,
+      telegramExtraInfo: {
+        parse_mode: 'Markdown',
+        disable_web_page_preview: true
+      }
+    };
+  }
 
   @Action({
     name: 'send',
