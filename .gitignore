@@ -25,3 +25,4 @@ pids
 
 .scannerwork
 /get.sh
+/.codacy-coverage/

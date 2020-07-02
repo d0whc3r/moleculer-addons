@@ -28,6 +28,7 @@ jobs:
     - run: yarn build
     - run: yarn test
     - run: curl -s https://codecov.io/bash > .codecov && chmod +x .codecov && ./.codecov && rm -fr .codecov
+    - run: curl -Ls https://coverage.codacy.com/get.sh > .codacy && chmod +x .codacy && ./.codacy && rm -fr .codacy
     - name: Coveralls slack
       uses: coverallsapp/github-action@master
       with:
