@@ -3804,10 +3804,10 @@ es6-promisify@^5.0.0:
   dependencies:
     es6-promise "^4.0.3"
 
-esbuild@0.5.17, esbuild@^0.5.3:
-  version "0.5.17"
-  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.5.17.tgz#4f7c5f1623acf2a751be1402d1682ea3ed8f6ca8"
-  integrity sha512-jKhNp77wsntsUdGk3JQwRszuJk/tVERzqPYofhQXdYiP+sYFIkRjiHPsIG2LZe4iEn+aw1kQ226Po3CXnY6YJQ==
+esbuild@0.5.18, esbuild@^0.5.3:
+  version "0.5.18"
+  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.5.18.tgz#b82f575015c7f3d4326dab0deabf71e52e972122"
+  integrity sha512-kvU6VqPmS7zBN6fPz6zWzu3eHmCFMB92L2cDz6yOWsviz2nIcAnI6bpN7T0mRR+GXbheEIlOj+sjc5a+KxYy/Q==
 
 escape-goat@^2.0.0:
   version "2.1.1"
