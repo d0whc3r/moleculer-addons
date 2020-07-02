@@ -53,3 +53,27 @@ jobs:
       uses: mrfyda/codacy-analysis-cli-action@master
       with:
         project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+    - name: Semantic Release
+      uses: cycjimmy/semantic-release-action@v2
+      with:
+        branches: |
+          [
+            'master',
+            'next',
+            'next-major',
+            {
+              name: 'beta',
+              prerelease: true
+            },
+            {
+              name: 'alpha',
+              prerelease: true
+            }
+          ]
+        extra_plugins: |
+          @semantic-release/changelog
+          @semantic-release/git
+        extends: semantic-release-monorepo
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

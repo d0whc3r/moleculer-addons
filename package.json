@@ -10,16 +10,13 @@
   "author": "d0whc3r",
   "repository": {
     "type": "git",
-    "url": "git@github.com:d0whc3r/moleculer-addons.git"
+    "url": "https://github.com/d0whc3r/moleculer-addons.git"
   },
   "license": "MIT",
   "scripts": {
     "--- MAIN ---": "------------------------------------------------------------------------------------------------------------------------",
     "build": "yarn lerna:run build",
     "test": "yarn lerna:run test:coverage",
-    "release:patch": "yarn lerna:run release:patch",
-    "release:minor": "yarn lerna:run release:minor",
-    "release:major": "yarn lerna:run release:major",
     "--- ADDON-SLACK ---": "------------------------------------------------------------------------------------------------------------------------",
     "example:slack": "yarn workspace @d0whc3r/moleculer-slack run example",
     "test:slack": "yarn workspace @d0whc3r/moleculer-slack run test",
@@ -38,7 +35,8 @@
     "clean:packages": "rm -fr yarn.lock package-lock.json dist node_modules",
     "format": "pretty-quick \"*.ts\" --write --staged",
     "lint": "eslint -c .eslintrc.js --ext .ts,.js packages",
-    "lint:fix": "yarn lint --fix"
+    "lint:fix": "yarn lint --fix",
+    "semantic-release": "semantic-release"
   },
   "devDependencies": {
     "@commitlint/cli": "9.0.1",
@@ -61,6 +59,8 @@
     "npm-run-all": "4.1.5",
     "prettier": "2.0.5",
     "pretty-quick": "2.0.1",
+    "semantic-release": "^17.1.1",
+    "semantic-release-monorepo": "^7.0.2",
     "sonar-scanner": "3.1.0"
   },
   "husky": {
@@ -76,5 +76,6 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
-  }
+  },
+  "version": "0.0.0-development"
 }
