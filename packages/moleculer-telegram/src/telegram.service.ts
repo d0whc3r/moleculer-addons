@@ -68,7 +68,8 @@ export class _TelegramService extends moleculer.Service<TelegramServiceOptionsSe
     }
     if (!channel) {
       throw new MoleculerError(
-        'UNKNOWN CHANNEL (set TELEGRAM_CHANNEL env variable or specify "channel" in action; it could be a simple string, and for multi channel: a string separated by commas or an array)'
+        'UNKNOWN CHANNEL (set TELEGRAM_CHANNEL env variable or specify "channel" in action;' +
+          ' it could be a simple string, and for multi channel: a string separated by commas or an array)'
       );
     }
     if (!this.telegram) {
