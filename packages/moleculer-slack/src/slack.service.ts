@@ -7,16 +7,31 @@ import MoleculerError = Errors.MoleculerError;
 
 export class _SlackService extends moleculer.Service<SlackServiceOptionsSettings> {
   private slack?: WebClient;
+  private _name = 'slack';
+  private _settings: SlackServiceOptionsSettings = {
+    slackToken: process.env.SLACK_TOKEN,
+    slackChannel: process.env.SLACK_CHANNEL
+  };
 
   public get name() {
-    return 'slack';
+    return this._name || 'slack';
   }
 
-  public get settings(): SlackServiceOptionsSettings {
-    return {
-      slackToken: process.env.SLACK_TOKEN,
-      slackChannel: process.env.SLACK_CHANNEL
-    };
+  public set name(value: string) {
+    this._name = value;
+  }
+
+  public get settings() {
+    return (
+      this._settings || {
+        slackToken: process.env.SLACK_TOKEN,
+        slackChannel: process.env.SLACK_CHANNEL
+      }
+    );
+  }
+
+  public set settings(value: SlackServiceOptionsSettings) {
+    this._settings = value;
   }
 
   @Action({
@@ -37,7 +52,8 @@ export class _SlackService extends moleculer.Service<SlackServiceOptionsSettings
     }
     if (!channel) {
       throw new MoleculerError(
-        'UNKNOWN CHANNEL (set SLACK_CHANNEL env variable or specify "channel" in action; it could be a simple string, and for multi channel: a string separated by commas or an array)'
+        'UNKNOWN CHANNEL (set SLACK_CHANNEL env variable or specify "channel" in action;' +
+          ' it could be a simple string, and for multi channel: a string separated by commas or an array)'
       );
     }
     if (!this.slack) {
@@ -50,9 +66,13 @@ export class _SlackService extends moleculer.Service<SlackServiceOptionsSettings
 
   @Method
   private sendMessageToChannels(text: string, channels: string[]) {
+    if (!this.slack) {
+      return [Promise.reject('Slack api not initiated')];
+    }
     const promises: Promise<WebAPICallResult>[] = [];
     channels.forEach((channel) => {
-      const promise = this.slack!.chat.postMessage({ text, channel })
+      const promise = this.slack?.chat
+        .postMessage({ text, channel })
         .then((response) => {
           // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
           this.logger.debug(`[slack] Message sent to "${channel}", id: ${response.ts}`);
@@ -60,7 +80,9 @@ export class _SlackService extends moleculer.Service<SlackServiceOptionsSettings
         })
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/restrict-template-expressions
         .catch((err: any) => Promise.reject(new MoleculerError(`[slack] Error in send message to "${channel}": ${err.message} (${err.detail})`)));
-      promises.push(promise);
+      if (promise) {
+        promises.push(promise);
+      }
     });
     return promises;
   }
