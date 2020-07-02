@@ -1,6 +1,6 @@
 {
   "name": "@d0whc3r/moleculer-telegram",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "type": "dist/index.d.ts",
@@ -78,5 +78,8 @@
   "jest-junit": {
     "outputDirectory": "../../coverage",
     "outputName": "telegram-junit.xml"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
   }
 }
