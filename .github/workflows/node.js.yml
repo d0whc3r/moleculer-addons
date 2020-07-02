@@ -27,7 +27,7 @@ jobs:
     - run: yarn install
     - run: yarn build
     - run: yarn test
-    - run: yarn test:send
+    - run: curl -s https://codecov.io/bash > .codecov && chmod +x .codecov && ./.codecov
     - name: Coveralls slack
       uses: coverallsapp/github-action@master
       with:
