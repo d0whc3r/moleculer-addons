@@ -17,6 +17,7 @@
     "--- MAIN ---": "------------------------------------------------------------------------------------------------------------------------",
     "build": "yarn lerna:run build",
     "test": "yarn lerna:run test:coverage",
+    "test:send": "bash <(curl -s https://codecov.io/bash)",
     "--- ADDON-SLACK ---": "------------------------------------------------------------------------------------------------------------------------",
     "example:slack": "yarn workspace @d0whc3r/moleculer-slack run example",
     "test:slack": "yarn workspace @d0whc3r/moleculer-slack run test",
