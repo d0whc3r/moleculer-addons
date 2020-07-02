@@ -9,20 +9,39 @@ import MoleculerError = Errors.MoleculerError;
 
 export class _TelegramService extends moleculer.Service<TelegramServiceOptionsSettings> {
   private telegram?: Telegraf<TelegrafContext>;
+  private _name = 'telegram';
+  private _settings: TelegramServiceOptionsSettings = {
+    telegramToken: process.env.TELEGRAM_TOKEN,
+    telegramChannel: process.env.TELEGRAM_CHANNEL,
+    telegramExtraInfo: {
+      parse_mode: 'Markdown',
+      disable_web_page_preview: true
+    }
+  };
 
   public get name() {
-    return 'telegram';
+    return this._name || 'telegram';
+  }
+
+  public set name(value: string) {
+    this._name = value;
   }
 
   public get settings(): TelegramServiceOptionsSettings {
-    return {
-      telegramToken: process.env.TELEGRAM_TOKEN,
-      telegramChannel: process.env.TELEGRAM_CHANNEL,
-      telegramExtraInfo: {
-        parse_mode: 'Markdown',
-        disable_web_page_preview: true
+    return (
+      this._settings || {
+        telegramToken: process.env.TELEGRAM_TOKEN,
+        telegramChannel: process.env.TELEGRAM_CHANNEL,
+        telegramExtraInfo: {
+          parse_mode: 'Markdown',
+          disable_web_page_preview: true
+        }
       }
-    };
+    );
+  }
+
+  public set settings(value: TelegramServiceOptionsSettings) {
+    this._settings = value;
   }
 
   @Action({
@@ -62,16 +81,22 @@ export class _TelegramService extends moleculer.Service<TelegramServiceOptionsSe
 
   @Method
   private sendMessageToChannels(text: string, channels: string[], extra: ExtraEditMessage = {}) {
+    if (!this.telegram) {
+      return [Promise.reject('Telegram api not initiated')];
+    }
     const promises: Promise<Message>[] = [];
     channels.forEach((channel) => {
-      const promise = this.telegram!.telegram.sendMessage(channel, text, extra)
+      const promise = this.telegram?.telegram
+        .sendMessage(channel, text, extra)
         .then((response) => {
           this.logger.debug(`[telegram] Message sent to "${channel}"`);
           return response;
         })
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access,@typescript-eslint/restrict-template-expressions
         .catch((err) => Promise.reject(new MoleculerError(`[telegram] Error in send message to "${channel}": ${err.message} (${err.detail})`)));
-      promises.push(promise);
+      if (promise) {
+        promises.push(promise);
+      }
     });
     return promises;
   }
