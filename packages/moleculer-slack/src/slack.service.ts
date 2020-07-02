@@ -1,17 +1,23 @@
 import { Action, Method, Service } from '@d0whc3r/moleculer-decorators';
-import { SlackSendParams, SlackServiceOptionsSettings, SlackServiceOptions } from './interfaces';
+import { SlackSendParams, SlackServiceOptions, SlackServiceOptionsSettings } from './interfaces';
 import moleculer, { Context, Errors } from 'moleculer';
 import { WebClient } from '@slack/web-api';
 import { WebAPICallResult } from '@slack/web-api/dist/WebClient';
 import MoleculerError = Errors.MoleculerError;
 
 export class _SlackService extends moleculer.Service<SlackServiceOptionsSettings> {
-  name = 'slack';
-  settings: SlackServiceOptionsSettings = {
-    slackToken: process.env.SLACK_TOKEN,
-    slackChannel: process.env.SLACK_CHANNEL
-  };
   private slack?: WebClient;
+
+  public get name() {
+    return 'slack';
+  }
+
+  public get settings(): SlackServiceOptionsSettings {
+    return {
+      slackToken: process.env.SLACK_TOKEN,
+      slackChannel: process.env.SLACK_CHANNEL
+    };
+  }
 
   @Action({
     name: 'send',
