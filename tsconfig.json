@@ -6,14 +6,10 @@
     "esModuleInterop": true,
     "experimentalDecorators": true,
     "lib": [
-      "ESNext",
-      "ES5",
-      "ES6",
-      "ES7",
-      "ES2015",
       "ES2016",
-      "DOM",
-      "ScriptHost"
+      "ES6",
+      "ES2015",
+      "DOM"
     ],
     "module": "CommonJS",
     "moduleResolution": "node",
@@ -30,7 +26,7 @@
     "sourceMap": true,
     "strict": true,
     "strictNullChecks": true,
-    "target": "ESNext",
+    "target": "ES2016",
     "traceResolution": false,
     "types": [
       "node",
