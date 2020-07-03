@@ -32,18 +32,6 @@ jobs:
       env:
         CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Coveralls slack
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        base-path: packages/moleculer-slack
-        path-to-lcov: coverage/slack/lcov.info
-    - name: Coveralls telegram
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        base-path: packages/moleculer-telegram
-        path-to-lcov: coverage/telegram/lcov.info
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@master
       env:
