@@ -1,6 +1,6 @@
 {
   "name": "@d0whc3r/moleculer-addons",
-  "version": "0.0.0-development",
+  "version": "1.0.0",
   "private": true,
   "workspaces": {
     "packages": [
@@ -19,7 +19,7 @@
     "build": "yarn lerna:run build",
     "test": "yarn lerna:run test:coverage",
     "commit": "git-cz",
-    "semantic-release": "semantic-release -e semantic-release-monorepo",
+    "semantic-release": "lerna exec --concurrency 1 -- semantic-release -e semantic-release-monorepo --tag-format='${LERNA_PACKAGE_NAME}-v\\${version}'",
     "--- ADDON-SLACK ---": "------------------------------------------------------------------------------------------------------------------------",
     "example:slack": "yarn workspace @d0whc3r/moleculer-slack run example",
     "test:slack": "yarn workspace @d0whc3r/moleculer-slack run test",
@@ -57,7 +57,7 @@
     "eslint-plugin-prettier": "3.1.4",
     "eslint-plugin-sonarjs": "0.5.0",
     "husky": "4.2.5",
-    "lerna": "3.22.1",
+    "lerna": "^3.22.1",
     "lint-staged": "10.2.11",
     "mkdirp": "1.0.4",
     "npm-run-all": "4.1.5",

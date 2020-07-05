@@ -29,9 +29,12 @@ jobs:
     - run: yarn test
     - run: curl -s https://codecov.io/bash > .codecov && chmod +x .codecov && ./.codecov && rm -fr .codecov
     - run: curl -Ls https://coverage.codacy.com/get.sh > .codacy && chmod +x .codacy && ./.codacy && rm -fr .codacy
+    - run: yarn semantic-release
       env:
         CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     - name: SonarCloud Scan
       uses: sonarsource/sonarcloud-github-action@master
       env:
@@ -41,27 +44,27 @@ jobs:
       uses: mrfyda/codacy-analysis-cli-action@master
       with:
         project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-    - name: Semantic Release
-      uses: cycjimmy/semantic-release-action@v2
-      with:
-        branches: |
-          [
-            'master',
-            'next',
-            'next-major',
-            {
-              name: 'beta',
-              prerelease: true
-            },
-            {
-              name: 'alpha',
-              prerelease: true
-            }
-          ]
-        extra_plugins: |
-          @semantic-release/changelog
-          @semantic-release/git
-        extends: semantic-release-monorepo
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+#    - name: Semantic Release
+#      uses: cycjimmy/semantic-release-action@v2
+#      with:
+#        branches: |
+#          [
+#            'master',
+#            'next',
+#            'next-major',
+#            {
+#              name: 'beta',
+#              prerelease: true
+#            },
+#            {
+#              name: 'alpha',
+#              prerelease: true
+#            }
+#          ]
+#        extra_plugins: |
+#          @semantic-release/changelog
+#          @semantic-release/git
+#        extends: semantic-release-monorepo
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
