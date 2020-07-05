@@ -50,7 +50,7 @@
     "builtin-modules": "3.1.0",
     "dotenv": "8.2.0",
     "dotenv-cli": "3.2.0",
-    "esbuild": "0.5.19",
+    "esbuild": "0.5.21",
     "jest": "26.1.0",
     "jest-chain": "1.1.5",
     "jest-cli": "26.1.0",
