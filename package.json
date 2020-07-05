@@ -38,7 +38,7 @@
     "format": "pretty-quick \"*.ts\" --write --staged",
     "lint": "eslint -c .eslintrc.js --ext .ts,.js packages",
     "lint:fix": "yarn lint --fix",
-    "postversion": "git push --follow-tags"
+    "postversion": "git commit -am 'chore(bump): bump version [skip-ci]' && git push --follow-tags"
   },
   "devDependencies": {
     "@commitlint/cli": "9.0.1",

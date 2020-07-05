@@ -33,7 +33,7 @@
     "build:dts": "dts-bundle-generator --config dts-bundle-generator.json",
     "test": "jest -i",
     "test:coverage": "yarn test --coverage",
-    "postversion": "git push --follow-tags"
+    "postversion": "git commit -am 'chore(bump): bump version [skip-ci]' && git push --follow-tags"
   },
   "peerDependencies": {
     "moleculer": "^0.14.0 || ^0.13.0 || ^0.12.0"
