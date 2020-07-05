@@ -37,12 +37,18 @@
     "clean:packages": "rm -fr yarn.lock package-lock.json dist node_modules",
     "format": "pretty-quick \"*.ts\" --write --staged",
     "lint": "eslint -c .eslintrc.js --ext .ts,.js packages",
-    "lint:fix": "yarn lint --fix"
+    "lint:fix": "yarn lint --fix",
+    "postversion": "git push --follow-tags"
   },
   "devDependencies": {
     "@commitlint/cli": "9.0.1",
     "@commitlint/config-conventional": "9.0.1",
     "@d0whc3r/moleculer-decorators": "1.4.1",
+    "@semantic-release/changelog": "5.0.1",
+    "@semantic-release/commit-analyzer": "8.0.1",
+    "@semantic-release/github": "7.0.7",
+    "@semantic-release/npm": "7.0.5",
+    "@semantic-release/release-notes-generator": "9.0.1",
     "@types/mkdirp": "1.0.1",
     "@types/node": "14.0.14",
     "@types/rimraf": "3.0.0",
