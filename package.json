@@ -1,6 +1,5 @@
 {
   "name": "@d0whc3r/moleculer-addons",
-  "version": "1.0.0",
   "private": true,
   "workspaces": {
     "packages": [
@@ -79,7 +78,8 @@
     ]
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org"
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
   },
   "czConfig": {
     "path": "node_modules/cz-conventional-changelog"
