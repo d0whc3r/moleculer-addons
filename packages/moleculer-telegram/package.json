@@ -61,7 +61,7 @@
     "jest-sonar-reporter": "2.0.0",
     "moleculer": "0.14.8",
     "np": "6.2.5",
-    "rollup": "2.18.2",
+    "rollup": "2.19.0",
     "rollup-plugin-auto-external": "2.0.0",
     "rollup-plugin-esbuild": "2.1.0",
     "rollup-plugin-node-builtins": "2.1.2",
