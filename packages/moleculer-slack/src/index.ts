@@ -1,4 +1,2 @@
-import SlackAsService from './slack.service';
-
 export * from './slack.mixin';
-export { SlackAsService };
+export { default as SlackAsService } from './slack.service';
