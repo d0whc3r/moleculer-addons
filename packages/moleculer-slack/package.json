@@ -57,7 +57,7 @@
     "moleculer": "0.14.8",
     "rollup": "2.20.0",
     "rollup-plugin-auto-external": "2.0.0",
-    "rollup-plugin-esbuild": "2.1.0",
+    "rollup-plugin-esbuild": "2.6.1",
     "rollup-plugin-node-builtins": "2.1.2",
     "ts-jest": "26.1.1",
     "ts-node": "8.10.2",
