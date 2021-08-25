@@ -1,16 +1,15 @@
 import { Action, Method, Service } from '@d0whc3r/moleculer-decorators';
 import { TelegramSendParams, TelegramServiceOptions, TelegramServiceOptionsSettings } from './interfaces';
 import moleculer, { Context, Errors } from 'moleculer';
-import { Telegraf } from 'telegraf';
-import { TelegrafContext } from 'telegraf/typings/context';
+import { Context as TelegrafContext, Telegraf } from 'telegraf';
+import { ExtraEditMessageText } from 'telegraf/typings/telegram-types';
 import { Message } from 'telegram-typings';
-import { ExtraEditMessage } from 'telegraf/typings/telegram-types';
 import MoleculerError = Errors.MoleculerError;
 
 export class _TelegramService extends moleculer.Service<TelegramServiceOptionsSettings> {
   private telegram?: Telegraf<TelegrafContext>;
-  private _name = 'telegram';
-  private _settings: TelegramServiceOptionsSettings = {
+  public name = 'telegram';
+  public settings: TelegramServiceOptionsSettings = {
     telegramToken: process.env.TELEGRAM_TOKEN,
     telegramChannel: process.env.TELEGRAM_CHANNEL,
     telegramExtraInfo: {
@@ -18,31 +17,6 @@ export class _TelegramService extends moleculer.Service<TelegramServiceOptionsSe
       disable_web_page_preview: true
     }
   };
-
-  public get name() {
-    return this._name || 'telegram';
-  }
-
-  public set name(value: string) {
-    this._name = value;
-  }
-
-  public get settings(): TelegramServiceOptionsSettings {
-    return (
-      this._settings || {
-        telegramToken: process.env.TELEGRAM_TOKEN,
-        telegramChannel: process.env.TELEGRAM_CHANNEL,
-        telegramExtraInfo: {
-          parse_mode: 'Markdown',
-          disable_web_page_preview: true
-        }
-      }
-    );
-  }
-
-  public set settings(value: TelegramServiceOptionsSettings) {
-    this._settings = value;
-  }
 
   @Action({
     name: 'send',
@@ -56,7 +30,7 @@ export class _TelegramService extends moleculer.Service<TelegramServiceOptionsSe
       message: { type: 'string' }
     }
   })
-  sendMessage(ctx: Context<TelegramSendParams, Record<string, unknown>>) {
+  sendMessage(ctx: Context<TelegramSendParams, Record<string, unknown>>): Promise<Message[]> {
     const {
       channel = this.settings.telegramChannel,
       token = this.settings.telegramToken,
@@ -81,7 +55,7 @@ export class _TelegramService extends moleculer.Service<TelegramServiceOptionsSe
   }
 
   @Method
-  private sendMessageToChannels(text: string, channels: string[], extra: ExtraEditMessage = {}) {
+  private sendMessageToChannels(text: string, channels: string[], extra: ExtraEditMessageText = {}) {
     if (!this.telegram) {
       return [Promise.reject('Telegram api not initiated')];
     }

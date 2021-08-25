@@ -15,11 +15,11 @@ $ npm install @d0whc3r/moleculer-telegram --save
 > This addon reads the `TELEGRAM_TOKEN` and `TELEGRAM_CHANNEL` environment variables, but all are optional
 
 ```js
-let { ServiceBroker } = require("moleculer");
-let { TelegramService } = require("@d0whc3r/moleculer-telegram");
+const { ServiceBroker } = require("moleculer");
+const { TelegramService } = require("@d0whc3r/moleculer-telegram");
 
 // Create broker
-let broker = new ServiceBroker({ logger: console });
+const broker = new ServiceBroker({ logger: console });
 
 // Load my service
 broker.createService({

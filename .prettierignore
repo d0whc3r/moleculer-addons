@@ -10,5 +10,3 @@ bin
 *.lock
 *.log
 *.png
-.yarn
-package-lock.json

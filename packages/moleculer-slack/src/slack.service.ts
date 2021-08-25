@@ -7,32 +7,32 @@ import MoleculerError = Errors.MoleculerError;
 
 export class _SlackService extends moleculer.Service<SlackServiceOptionsSettings> {
   private slack?: WebClient;
-  private _name = 'slack';
-  private _settings: SlackServiceOptionsSettings = {
+  public name = 'slack';
+  public settings: SlackServiceOptionsSettings = {
     slackToken: process.env.SLACK_TOKEN,
     slackChannel: process.env.SLACK_CHANNEL
   };
 
-  public get name() {
-    return this._name || 'slack';
-  }
+  // public get name() {
+  //   return this._name || 'slack';
+  // }
+  //
+  // public set name(value: string) {
+  //   this._name = value;
+  // }
 
-  public set name(value: string) {
-    this._name = value;
-  }
-
-  public get settings() {
-    return (
-      this._settings || {
-        slackToken: process.env.SLACK_TOKEN,
-        slackChannel: process.env.SLACK_CHANNEL
-      }
-    );
-  }
-
-  public set settings(value: SlackServiceOptionsSettings) {
-    this._settings = value;
-  }
+  // public get settings() {
+  //   return (
+  //     this._settings || {
+  //       slackToken: process.env.SLACK_TOKEN,
+  //       slackChannel: process.env.SLACK_CHANNEL
+  //     }
+  //   );
+  // }
+  //
+  // public set settings(value: SlackServiceOptionsSettings) {
+  //   this._settings = value;
+  // }
 
   @Action({
     name: 'send',

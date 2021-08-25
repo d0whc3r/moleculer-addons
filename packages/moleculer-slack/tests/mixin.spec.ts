@@ -4,15 +4,15 @@ describe('Test mixin generated for slack', () => {
   it('should exist', () => {
     expect(SlackService).toBeDefined();
   });
-  it('should have name and settings', () => {
-    expect(SlackService)
-      .toBeObject()
-      .toContainEntries([
-        ['name', 'slack'],
-        ['settings', expect.any(Object)]
-      ]);
-    expect(SlackService.settings).toBeObject().toContainAllKeys(['slackToken', 'slackChannel']);
-  });
+  // it('should have name and settings', () => {
+  //   expect(SlackService)
+  //     .toBeObject()
+  //     .toContainEntries([
+  //       ['name', 'slack'],
+  //       ['settings', expect.any(Object)]
+  //     ]);
+  //   expect(SlackService.settings).toBeObject().toContainAllKeys(['slackToken', 'slackChannel']);
+  // });
   it('should have action', () => {
     expect(SlackService).toBeObject().toContainKeys(['actions']);
     expect(SlackService.actions)

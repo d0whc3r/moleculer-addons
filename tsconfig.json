@@ -4,6 +4,7 @@
     "declaration": false,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
+    "noEmit": true,
     "experimentalDecorators": true,
     "lib": [
       "ES2016",
@@ -30,7 +31,9 @@
     "traceResolution": false,
     "types": [
       "node",
-      "jest"
+      "jest",
+      "jest-chain",
+      "jest-extended"
     ]
   },
   "exclude": [

@@ -1,11 +1,11 @@
 import { Options } from '@d0whc3r/moleculer-decorators';
 import { ServiceSettingSchema } from 'moleculer';
-import { ExtraEditMessage } from 'telegraf/typings/telegram-types';
+import { ExtraEditMessageText } from 'telegraf/typings/telegram-types';
 
 export interface TelegramServiceOptionsSettings extends ServiceSettingSchema {
   telegramToken?: string;
   telegramChannel?: string | string[];
-  telegramExtraInfo?: ExtraEditMessage;
+  telegramExtraInfo?: ExtraEditMessageText;
 }
 
 export interface TelegramServiceOptions extends Options {

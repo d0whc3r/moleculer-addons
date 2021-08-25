@@ -24,6 +24,7 @@ This is a monorepo, contains some addons for moleculer projects
 | ---- | ------- | ----------- |
 | [moleculer-slack](/packages/moleculer-slack#readme) | [![NPM version](https://img.shields.io/npm/v/@d0whc3r/moleculer-slack.svg)](https://www.npmjs.com/package/@d0whc3r/moleculer-slack) | Send Messages to Slack channel |
 | [moleculer-telegram](/packages/moleculer-telegram#readme) | [![NPM version](https://img.shields.io/npm/v/@d0whc3r/moleculer-telegram.svg)](https://www.npmjs.com/package/@d0whc3r/moleculer-telegram) | Send Messages to Telegram channel |
+| [moleculer-bee-queue](/packages/moleculer-bee-queue#readme) | [![NPM version](https://img.shields.io/npm/v/@d0whc3r/moleculer-bee-queue.svg)](https://www.npmjs.com/package/@d0whc3r/moleculer-bee-queue) | Manage queues with [bee-queue](https://github.com/bee-queue/bee-queue) |
 
 ## Contribution
 

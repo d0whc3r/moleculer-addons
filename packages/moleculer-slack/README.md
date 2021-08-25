@@ -15,11 +15,11 @@ $ npm install @d0whc3r/moleculer-slack --save
 > This addon reads the `SLACK_TOKEN` and `SLACK_CHANNEL` environment variables, but all are optional
 
 ```js
-let { ServiceBroker } = require("moleculer");
-let { SlackService } = require("@d0whc3r/moleculer-slack");
+const { ServiceBroker } = require("moleculer");
+const { SlackService } = require("@d0whc3r/moleculer-slack");
 
 // Create broker
-let broker = new ServiceBroker({ logger: console });
+const broker = new ServiceBroker({ logger: console });
 
 // Load my service
 broker.createService({
